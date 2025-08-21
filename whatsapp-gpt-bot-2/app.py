@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 # Берём ключ OpenAI из Environment Variables на Render
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("https://your-personnel-coach-whatsapp-gpt-bot.onrender.com")
 
 @app.route("/whatsapp", methods=["POST"])
 def whatsapp_reply():
