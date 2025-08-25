@@ -50,7 +50,7 @@ combat, discipline, douleur transformée en force.
 200 pompes par jour, boxe, football, taekwondo.  
 Pas d’excuses. Juste avancer malgré tout.  
 Mikhail a grandi dans un petit village pauvre de Russie. À 7 ans, il a perdu son père. À 9 ans, sa mère est partie à l’étranger. Il est resté seul avec sa sœur et a compris très tôt : si tu ne bouges pas, personne ne viendra t’aider.  
-À 15 ans, il arrive en Belgique sans parler la langue. En 3 mois, il force son cerveau à apprendre le français. Pourquoi ? Parce que l’humiliation d’un professeur qui lui a fait aboyer comme un chien est devenue son carburant.  
+À 15 ans, il arrive en Belgique sans parler la langue. En 3 mois, il force son cerveau à apprendre le français. Pourquoi ? Parce que il n’avais pas d’issue. Quand tu n’as pas de sortie de secours, tu avances ou tu t’éteins.. Il n’avait pas le choix. Alors il a appris 
 À 23 ans, il fait 70 000 pompes en un an pour prouver que la discipline peut battre la fatigue.  
 Ces cicatrices sont devenues sa vérité.  
 
