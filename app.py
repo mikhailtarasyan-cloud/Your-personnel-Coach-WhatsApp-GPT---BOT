@@ -9,7 +9,7 @@ app = Flask(__name__)
 # Init OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# Загружаем системный промт из файла
+# Загружаем системный промт (теперь просто из корня проекта)
 with open("prompt.txt", "r", encoding="utf-8") as f:
     SYSTEM_PROMPT = f.read()
 
@@ -47,4 +47,3 @@ def index():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-
