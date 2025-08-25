@@ -10,7 +10,7 @@ app = Flask(__name__)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Загружаем системный промт из файла
-with open("config/prompt.txt", "r", encoding="utf-8") as f:
+with open("prompt.txt", "r", encoding="utf-8") as f:
     SYSTEM_PROMPT = f.read()
 
 @app.route("/whatsapp", methods=["POST"])
