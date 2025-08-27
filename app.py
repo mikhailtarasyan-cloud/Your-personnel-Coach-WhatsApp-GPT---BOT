@@ -13,7 +13,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 # URL de ton programme GitHub (RAW)
-PROGRAM_URL = "https://raw.githubusercontent.com/TON_USER/TON_REPO/main/program.md"
+PROGRAM_URL = "https://github.com/mikhailtarasyan-cloud/Your-personnel-Coach-WhatsApp-GPT---BOT/blob/main/program.md"
 
 # --- Charger programme ---
 text = requests.get(PROGRAM_URL).text
