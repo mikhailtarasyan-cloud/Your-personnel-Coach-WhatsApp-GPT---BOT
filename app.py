@@ -86,14 +86,21 @@ async def whatsapp_webhook(From: str = Form(...), Body: str = Form(...)):
     # --- Réponse IA ---
     answer = qa.run(user_text)
 
-    # --- Gestion mémoire ---
-    if "je m'appelle" in user_text.lower():
-        mem["name"] = user_text.split("je m'appelle")[-1].strip().split()[0]
+    # --- Reconnaissance du nom ---
+name_triggers = ["je m'appelle", "mon nom est", "je suis", "moi c'est"]
+for trig in name_triggers:
+    if trig in user_text.lower():
+        # prend le mot juste après le trigger
+        mem["name"] = user_text.lower().split(trig)[-1].strip().split()[0].capitalize()
+        break
 
-    if "terminé" in user_text.lower():
-        mem["completed"].append(f"etape{mem['stage']}_exo")
-        if mem["stage"] < 5:
-            mem["stage"] += 1
+# --- Validation d'étape (terminé, fini, fais, fait) ---
+stage_triggers = ["terminé", "fini", "fais", "fait"]
+if any(word in user_text.lower() for word in stage_triggers):
+    mem["completed"].append(f"etape{mem['stage']}_exo")
+    if mem["stage"] < 5:
+        mem["stage"] += 1
+
 
     mem["last_seen"] = int(time.time())
     save_mem(user_id, mem)
