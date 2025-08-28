@@ -87,21 +87,24 @@ async def whatsapp_webhook(From: str = Form(...), Body: str = Form(...)):
     answer = qa.run(user_text)
 
     # --- Reconnaissance du nom ---
-name_triggers = ["je m'appelle", "mon nom est", "je suis", "moi c'est"]
-for trig in name_triggers:
-    if trig in user_text.lower():
-        # prend le mot juste après le trigger
-        mem["name"] = user_text.lower().split(trig)[-1].strip().split()[0].capitalize()
-        break
+    name_triggers = ["je m'appelle", "mon nom est", "je suis", "moi c'est"]
+    for trig in name_triggers:
+        if trig in user_text.lower():
+            mem["name"] = user_text.lower().split(trig)[-1].strip().split()[0].capitalize()
+            break
 
-# --- Validation d'étape (terminé, fini, fais, fait) ---
-stage_triggers = ["terminé", "fini", "fais", "fait"]
-if any(word in user_text.lower() for word in stage_triggers):
-    mem["completed"].append(f"etape{mem['stage']}_exo")
-    if mem["stage"] < 5:
-        mem["stage"] += 1
+    # --- Validation d'étape (terminé, fini, fais, fait) ---
+    stage_triggers = ["terminé", "fini", "fais", "fait"]
+    if any(word in user_text.lower() for word in stage_triggers):
+        old_stage = mem["stage"]
+        mem["completed"].append(f"etape{old_stage}_exo")
+        if mem["stage"] < 5:
+            mem["stage"] += 1
+            answer = f"Bravo {mem['name'] or 'ami'} 🎉 tu as fini l’étape {old_stage}, on passe à l’étape {mem['stage']} 🚀"
+        else:
+            answer = f"Bravo {mem['name'] or 'ami'} 🎉 tu as complété toutes les étapes du programme ! 🔥"
 
-
+    # --- Sauvegarde mémoire ---
     mem["last_seen"] = int(time.time())
     save_mem(user_id, mem)
 
@@ -109,4 +112,3 @@ if any(word in user_text.lower() for word in stage_triggers):
     resp = MessagingResponse()
     resp.message(answer)
     return PlainTextResponse(str(resp))
-
