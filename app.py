@@ -75,9 +75,11 @@ if __name__ == "__main__":
         print("❌ OpenAI API ключ НЕ загружен!")
         print("Проверьте файл .env")
     
-    print(f"🌐 Сервер запускается на порту 5005")
-    print(f"📱 WhatsApp endpoint: http://localhost:5005/whatsapp")
-    print(f"🏠 Главная страница: http://localhost:5005/")
+    # Используем порт из переменной окружения или 5001 по умолчанию
+    port = int(os.getenv("PORT", 5001))
+    print(f"🌐 Сервер запускается на порту {port}")
+    print(f"📱 WhatsApp endpoint: http://localhost:{port}/whatsapp")
+    print(f"🏠 Главная страница: http://localhost:{port}/")
     print("=" * 50)
     
-    app.run(host="0.0.0.0", port=5005, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=True)
